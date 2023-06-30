@@ -1,0 +1,134 @@
+@use '_variables' as variables;
+@use '_text';
+
+.header {
+    overflow: hidden;
+    background-color: black;
+}
+
+
+.header__navigation {
+    display: flex;
+    width: 60%;
+    max-width: 800px;
+    flex-direction: column;
+}
+
+.header__wrapper {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    width: 80%;
+    justify-content: space-between;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.header__links {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    &--underline {
+        width: 70%
+    }
+}
+
+.header__link {
+    @extend %link;
+    transition: 0.5s;
+    &:hover {
+        transition: 0.5s;
+        border-bottom: 1px white solid;
+    }
+}
+
+.header__search {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+}
+
+.header__search-input {
+    width: 250px;
+    background: none;
+    color: white;
+    border: none;
+    border-bottom: 1px solid white;
+    transition: 0.5s;
+    height: 20px;
+    @extend %paragraph;
+
+    &::-ms-value {
+        padding: 0;
+    }
+
+    &::placeholder {
+        user-select: none;
+        color: white;
+        transform: translate(-1px, 0);
+        transition: 0.5s;
+        overflow: visible;
+    }
+
+    &:focus::placeholder {
+        user-select: none;
+        display: block;
+        color: transparent;
+        font-size: 0.8rem;
+        transform: translate(0, -22px);
+        overflow: visible;
+    }
+
+    &:focus {
+        border-color: variables.$link-color;
+        outline: none;
+    }
+
+    &:focus ~ .header__label {
+        color: variables.$link-color;
+        transform: translate(56px, -22px);
+        font-size: 0.8rem;
+    }
+}
+
+.header__label {
+    user-select: none;
+    cursor: text;
+    position: absolute;
+    transform: translate(56px, -2px);
+    transition: 0.5s;
+    @extend %paragraph;
+    color: transparent;
+    display: block;
+}
+
+.header__login {
+    display: flex;
+    flex-direction: row;
+    align-items: center
+}
+
+.header__login-button, .header__search-button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 45px;
+    margin-right: 10px;
+}
+
+
+.header__login-icon, .header__search-icon {
+    width: 100%;
+}
+
+.header__login-link {
+    @extend %paragraph;
+    color: white;
+    margin-right: 10px;
+    
+    &:hover {
+        border-bottom: 1px solid white;
+        transform: translateY(1px);
+    }
+}

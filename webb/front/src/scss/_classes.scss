@@ -1,0 +1,142 @@
+.classes__list {
+    width: 85%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    
+}
+
+.class {
+    margin: 30px;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 4px 4px 30px -12px rgba(34, 60, 80, 0.2);
+}
+
+.class__time {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.class__heading {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+}
+
+.class__item {
+    margin-bottom: 15px;
+    color: #646464;
+}
+
+.class__link {
+    color: black;
+    text-decoration: underline;
+
+    &:hover {
+        color: #FF4433;
+    }
+}
+
+.class__tile {
+    transition: 0.5s;    
+    overflow: hidden;
+    background-color: black;
+}
+
+.class__background {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    flex-direction: row;
+    height: 50vh;
+    width: 100%;
+}
+
+.class__image {
+    transition: 1s;
+    width: 120%;
+    opacity: 30%;
+    transform: translate(-15%, 0);
+
+    &:hover {
+        opacity: 100%;
+    }
+}
+
+.class__info-wrapper {
+    padding-top: 150px;
+    background-color: #F2F2F2;
+}
+
+.info__wrapper {
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 150px;
+}
+
+.class__info-heading {
+    font-size: 2.6rem;
+    margin-bottom: 50px;
+}
+
+.class__info-time {
+    font-size: 1.5rem;
+    font-weight: 200;
+    margin-bottom: 90px;
+}
+
+.class__info-text {
+    font-size: 1.3rem;
+    font-weight: 200;
+}
+
+.class__form-wrapper {
+    background-color: #F2F2F2;
+    padding-bottom: 150px;
+}
+
+.class__form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.class__form-heading {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 60px;
+}
+
+.class__form-text {
+    font-size: 1.5rem;
+    font-weight: 200;
+    margin-bottom: 70px;
+}
+
+.class__form-inputs {
+    display: flex;
+    flex-direction: row;
+}
+
+.class__form-input {
+    background-color: transparent;
+    border: none;
+    width: 350px;
+    border-bottom: solid 2px #ADADAD;
+    margin-right: 40px;
+    font-size: 1.5rem;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.class__form-button {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    padding: 20px;
+    border-radius: 50px;
+}

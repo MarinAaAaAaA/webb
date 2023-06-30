@@ -1,0 +1,31 @@
+.scroll {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: white;
+    background-color: black;
+    opacity: 0%;
+    z-index: 100;
+    transition: 0.5s;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    
+    &--visible {
+        visibility: visible;
+        opacity: 100%;
+    }
+}
+
+.scroll__link {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.scroll__image {
+    margin: 0 auto;
+    width: 70%;
+    height: 70%;
+}

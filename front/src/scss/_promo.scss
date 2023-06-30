@@ -1,0 +1,250 @@
+.promo {
+    // background-color: black;
+    // height: 100vh;
+}
+
+.promo__text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20%;
+    color: white;
+    position: absolute;
+    z-index: -999;
+    font-family: Roboto;
+    font-style: italic;
+}
+
+.promo__header {
+    font-size: 4.25rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.promo__paragraph {
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.promo__background {
+    mix-blend-mode: color;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    max-height: 105vh;
+    // height: 100%;
+    // margin-bottom: 200px;   
+}
+
+.promo__tile {
+    transition: 0.5s;    
+    overflow: hidden;
+    background-color: black;
+}
+
+.promo__image {
+    transition: 1s;
+    width: 120%;
+    opacity: 30%;
+    transform: translate(-15%, 0);
+
+    &:hover {
+        opacity: 100%;
+    }
+}
+
+.promo__info {
+    color: white;
+    background-color: black;
+    
+    animation: info-coloring 1s linear both;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * 1s);
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+}
+
+@keyframes info-coloring {
+    to {
+        background-color: #BCBEC0;
+        color: black;
+    }
+}
+
+.promo__info-text {
+    font-family: roboto;
+    font-size: 1.3rem;
+    width: 60%;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+
+.benefits {
+    width: 100%;
+    overflow: hidden;
+}
+
+.benefits__banner {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    overflow: hidden;
+    align-items: center;
+}
+
+.benefits__wrapper {
+    overflow: hidden;
+}
+
+.benefits__header, .plan__banner-heading {
+    width: 100%;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 2.15rem;
+    color: white;
+    position: absolute;
+    z-index: 2;
+    user-select: none;
+    margin: 0 auto;
+}
+
+.benefits__background {
+    width: 100%;
+    max-height: 600px;
+    overflow: hidden;
+}
+
+.benefits__image {
+    width: 100%;
+    object-fit: cover;
+    object-position: 50% 0%;
+}
+
+.benefits__list, .plan__list {
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 150px;
+}
+
+.benefit, .plan__item {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 60px;
+    width: 80%;
+}
+
+.benefit__marker {
+    margin-right: 40px;
+    position: relative;
+}
+
+
+.benefit__text, .plan__text {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.benefit__heading, .plan__heading {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.benefit__paragraph, .plan__paragraph {
+    font-size: 1rem;
+    line-height: 1.7rem;
+    font-weight: 200;
+}
+
+.plan {
+    width: 100%;
+}
+
+.plan__banner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.plan__background {
+    width: 100%;
+    max-height: 600px;
+    overflow: hidden;
+    background-color: black;
+}
+
+.plan__banner-image {
+    width: 100%;
+    object-fit: cover;
+    opacity: 60%;
+}
+
+.plan__item {
+    display: flex;
+
+    &:before {
+        content: attr(data-before);
+        border: 2px solid #000000;
+        border-radius: 100%;
+        display: inline-block;
+        padding: 0.8rem 1.1rem 0.8rem 1.1rem;
+        margin-right: 40px;
+        transform: translate(0, -0.7rem);
+    }
+}
+
+.plan {
+    overflow: hidden;
+    margin-bottom: 150px;
+    display: flex;
+    flex-direction: column  ;
+}
+
+.plan__list {
+    margin-bottom: 0;
+}
+
+.plan__button {
+    cursor: pointer;
+    margin: 0 auto;
+    padding: 20px 80px 20px 80px;
+    border-radius: 100px;
+    border: none;
+    font-family: Roboto;
+    font-weight: 600;
+    color: white;
+    background-color: #460000;
+    transition: 0.5s;
+
+    &:hover {
+        background-color: #5a0000;
+    }
+
+    &:active {
+        background-color: #3a0000;
+    }
+}
+
+// .item {
+//     animation: displace 1s;
+// }
+
+// @keyframes displace {
+//     from {
+
+//     }
+//     to {
+//         transform: translate(100%, 0);
+//     }
+// }

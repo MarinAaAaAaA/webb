@@ -1,0 +1,107 @@
+version: '3.11.3'
+
+services:
+  django:
+    build: ./backend
+    container_name: Backend-Django
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend:/usr/src/app/
+    ports:
+      - 8000:8000
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=django-insecure-95=n41&^z0w=qq=pcf@pnkka$=$g#it0^)go9e2ac!36q@n)r3
+      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+    depends_on:
+      - redis
+  redis:
+    image: redis:alpine
+    container_name: Redis
+  redis-ping:
+    image: redis
+    container_name: Redis-PING
+    command: redis-cli -h redis ping
+    depends_on:
+      - redis
+  celery:
+    build: ./backend
+    container_name: Celery
+    command: celery -A back_api worker -l info
+    volumes:
+      - ./backend:/usr/src/app/
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=django-insecure-95=n41&^z0w=qq=pcf@pnkka$=$g#it0^)go9e2ac!36q@n)r3
+      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+    depends_on:
+      - redis
+  celery-beat:
+    build: ./backend
+    container_name: Celery-Beat
+    command: celery -A back_api beat -l info
+    volumes:
+      - ./backend:/usr/src/app/
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=django-insecure-95=n41&^z0w=qq=pcf@pnkka$=$g#it0^)go9e2ac!36q@n)r3
+      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+    depends_on:
+      - redis
+  centrifugo:
+      container_name: centrifugo
+      image: centrifugo/centrifugo:v4
+      volumes:
+        - ./config.json:/centrifugo/config.json
+      command:
+        centrifugo -c config.json --admin
+      ports:
+        - "8001:8001"
+      ulimits:
+        nofile:
+          soft: 65535
+          hard: 65535
+  flower:
+    image: mher/flower
+    container_name: Flower-Celery
+    command: celery flower --persisten=True
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/1
+      - FLOWER_PORT=8888
+    ports:
+      - 8888:8888 # docker will expose this ports
+    depends_on:
+      - redis
+      - celery
+      - celery-beat
+  smtp-server:
+    image: mailhog/mailhog
+    container_name: Mailhog 
+    expose:
+      - 1025
+      - 8025
+    ports:
+      - '1025:1025'
+      - '8025:8025'
+
+
+  node:
+    # Аналогично, build
+    build: ./front
+    # имя контейнера
+    container_name: Frontend
+    # рестарт
+    restart: always
+    # порты
+    ports:
+      - 3000:3000
+    # команда при запуске
+    command: npm start
+    # Зависимость. нет смысла ноде, если некому отдать ей данные. поэтому сначала стартуем сервис django, а за ней node
+    depends_on:
+      - django
+# создаём два volume для статики
+volumes:
+  django_static_volume:
+  django_media_volume:
+
